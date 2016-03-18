@@ -68,26 +68,48 @@ int main(int argc, char const *argv[])
 		}
 		else if (opcMen == 2)
 		{
-			for (int i = 0; i < inventario.size(); ++i)
-			{
-				cout << (i+1) << inventario.at(i).toString() << "\n";
+			if (inventario.size() > 0)
+				{
+					for (int i = 0; i < inventario.size(); ++i)
+					{
+						cout << (i+1) << inventario.at(i).toString() << "\n";
+					}
+					cout << "Seleccione un Obra para Tranferir, Bitte\n";
+					cin >> posTrans;
+					tranferidos.push_back(inventario.at(posTrans-1));
+					inventario.erase(inventario.begin() + (posTrans-1));
+					cout << "Tranferecia Exitosa!!\n";
+				}
+				else
+				{
+					cout << "No Hay inventario para Tranferir!!\n";
+				}	
 			}
-			cout << "Seleccione un Obra para Tranferir, Bitte\n";
-			cin >> posTrans;
-			tranferidos.push_back(inventario.at(posTrans-1));
-			inventario.erase(inventario.begin() + (posTrans-1));
-		}
 		else if (opcMen == 3)
 		{	
-			cout << "Invetario\n";
-			for (int i = 0; i < inventario.size(); ++i)
+			if (inventario.size() > 0)
 			{
-				cout << inventario.at(i).toString()<< "\n";
+				cout << "Invetario\n";
+				for (int i = 0; i < inventario.size(); ++i)
+				{
+					cout << inventario.at(i).toString()<< "\n";
+				}
 			}
-			cout << "Tranferidos\n";
-			for (int i = 0; i < tranferidos.size(); ++i)
+			else
 			{
-				cout << tranferidos.at(i).toString() << "\n";
+				cout << "No Hay inventario!!\n";
+			}
+			if (tranferidos.size() > 0)
+			{
+				cout << "Tranferidos\n";
+				for (int i = 0; i < tranferidos.size(); ++i)
+				{
+					cout << tranferidos.at(i).toString() << "\n";
+				}
+			}
+			else
+			{
+				cout << "No Hay Transferidos!!\n";				
 			}	
 		}
 	} while (opcMen != 4);
